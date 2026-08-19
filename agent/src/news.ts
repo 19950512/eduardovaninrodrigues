@@ -15,18 +15,12 @@ const UA =
   "Mozilla/5.0 (compatible; EduardoVaninAgente/1.0; +https://eduardovrodrigues.adv.br)";
 
 export async function coletarNoticias(env: Env): Promise<Noticia[]> {
-  console.log(`[debug] iniciando coleta de ${FONTES.length} fontes.`);
   const listas = await Promise.all(
     FONTES.map((f) =>
-      coletarDaFonte(f)
-        .then((itens) => {
-          console.log(`[debug] ${f.nome}: ${itens.length} itens brutos.`);
-          return itens;
-        })
-        .catch((e) => {
-          console.warn(`Falha ao coletar ${f.nome}:`, (e as Error).message);
-          return [] as Noticia[];
-        }),
+      coletarDaFonte(f).catch((e) => {
+        console.warn(`Falha ao coletar ${f.nome}:`, (e as Error).message);
+        return [] as Noticia[];
+      }),
     ),
   );
 
