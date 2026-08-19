@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------- */
+/* Paleta institucional — bordô como cor principal, sem gradientes.        */
+/* Os mesmos tons de bordô são usados no tema claro e no tema escuro.      */
+/* ---------------------------------------------------------------------- */
+:root {
+  --color-bordeaux-50: #fbecee;
+  --color-bordeaux-100: #f3ccd2;
+  --color-bordeaux-200: #e6a0ac;
+  --color-bordeaux-300: #d06f81;
+  --color-bordeaux-400: #b34558;
+  --color-bordeaux-500: #93233a;
+  --color-bordeaux-600: #7a1128;
+  --color-bordeaux-700: #630e20;
+  --color-bordeaux-800: #4d0b19;
+  --color-bordeaux-900: #380813;
+  --color-bordeaux-950: #250509;
+
+  --color-offwhite: #f7f4ef;
+  --color-ink: #16130f;
+
+  /* Tema claro (padrão) */
+  --background: #ffffff;
+  --background-subtle: var(--color-offwhite);
+  --surface: #ffffff;
+  --foreground: var(--color-ink);
+  --foreground-muted: #57534a;
+  --border-color: #e5e0d8;
+  --primary: var(--color-bordeaux-600);
+  --primary-hover: var(--color-bordeaux-700);
+  --primary-foreground: #ffffff;
+  --ring: var(--color-bordeaux-500);
+}
+
+.dark {
+  --background: #121110;
+  --background-subtle: #1a1815;
+  --surface: #1c1a17;
+  --foreground: var(--color-offwhite);
+  --foreground-muted: #b9b2a5;
+  --border-color: #322e28;
+  --primary: var(--color-bordeaux-400);
+  --primary-hover: var(--color-bordeaux-300);
+  --primary-foreground: #16130f;
+  --ring: var(--color-bordeaux-300);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-subtle: var(--background-subtle);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-border: var(--border-color);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-ring: var(--ring);
+  --color-offwhite: var(--color-offwhite);
+  --color-ink: var(--color-ink);
+
+  --color-bordeaux-50: var(--color-bordeaux-50);
+  --color-bordeaux-100: var(--color-bordeaux-100);
+  --color-bordeaux-200: var(--color-bordeaux-200);
+  --color-bordeaux-300: var(--color-bordeaux-300);
+  --color-bordeaux-400: var(--color-bordeaux-400);
+  --color-bordeaux-500: var(--color-bordeaux-500);
+  --color-bordeaux-600: var(--color-bordeaux-600);
+  --color-bordeaux-700: var(--color-bordeaux-700);
+  --color-bordeaux-800: var(--color-bordeaux-800);
+  --color-bordeaux-900: var(--color-bordeaux-900);
+  --color-bordeaux-950: var(--color-bordeaux-950);
+
+  --font-serif: var(--font-display);
+  --font-sans: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-bordeaux-600);
+  color: #ffffff;
+}
+
+.dark ::selection {
+  background: var(--color-bordeaux-400);
+  color: #16130f;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+.font-display {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+}
+
+/* Utilitário de container editorial, reutilizado em todas as seções */
+.container-editorial {
+  width: 100%;
+  max-width: 84rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container-editorial {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-editorial {
+    padding-inline: 3rem;
+  }
+}
+
+/* Balanceamento de texto em títulos longos */
+.text-balance {
+  text-wrap: balance;
+}
