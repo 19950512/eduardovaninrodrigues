@@ -30,8 +30,11 @@ import { randomToken, hmacHex, timingSafeEqual } from "./util";
 import type { Env, Pendente } from "./types";
 
 export default {
-  async scheduled(_controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
-    ctx.waitUntil(rodada(env));
+  async scheduled(_controller: ScheduledController, env: Env, _ctx: ExecutionContext): Promise<void> {
+    // Aguarda a rodada inteira aqui dentro: ctx.waitUntil() só dá um tempo
+    // extra curto depois que a invocação "termina" e cancela o que sobrar —
+    // não é suficiente pro pipeline completo (Claude + GitHub + WhatsApp).
+    await rodada(env);
   },
 
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -43,14 +46,18 @@ export default {
 
     // Dispara uma rodada manualmente (sem esperar o cron). Protegido pelo
     // APPROVAL_SECRET. ?force=1 ignora a cadência mínima entre posts.
+    // ?repetir=1 ignora o dedup de notícias (pode gerar sobre algo já visto).
     if (request.method === "GET" && url.pathname === "/trigger") {
       const secret = url.searchParams.get("secret") ?? "";
       if (!timingSafeEqual(secret, env.APPROVAL_SECRET)) {
         return new Response("forbidden", { status: 403 });
       }
       const force = url.searchParams.get("force") === "1";
-      ctx.waitUntil(rodada(env, { force }));
-      return new Response("rodada disparada — acompanhe pelo `npm run tail`", { status: 202 });
+      const ignorarDedup = url.searchParams.get("repetir") === "1";
+      // Aguarda o pipeline inteiro (pode levar dezenas de segundos) em vez de
+      // usar ctx.waitUntil(), que cancela o trabalho pouco depois da resposta.
+      await rodada(env, { force, ignorarDedup });
+      return new Response("rodada concluída — confira o GitHub/WhatsApp", { status: 200 });
     }
 
     // Verificação do webhook (Meta faz um GET com hub.*).
@@ -107,7 +114,7 @@ export default {
 } satisfies ExportedHandler<Env>;
 
 /** Uma rodada de geração + notificação. */
-async function rodada(env: Env, opts?: { force?: boolean }): Promise<void> {
+async function rodada(env: Env, opts?: { force?: boolean; ignorarDedup?: boolean }): Promise<void> {
   try {
     // Cadência: só propõe se já passou o intervalo desde a última proposta.
     const last = await getLastRun(env);
@@ -119,7 +126,7 @@ async function rodada(env: Env, opts?: { force?: boolean }): Promise<void> {
       }
     }
 
-    const noticias = await coletarNoticias(env);
+    const noticias = await coletarNoticias(env, { ignorarDedup: opts?.ignorarDedup });
     console.log(`Coletadas ${noticias.length} notícias novas.`);
     if (noticias.length === 0) {
       console.log("Sem notícias novas — tentará na próxima rodada.");

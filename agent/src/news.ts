@@ -14,7 +14,7 @@ import type { Env, Noticia } from "./types";
 const UA =
   "Mozilla/5.0 (compatible; EduardoVaninAgente/1.0; +https://eduardovrodrigues.adv.br)";
 
-export async function coletarNoticias(env: Env): Promise<Noticia[]> {
+export async function coletarNoticias(env: Env, opts?: { ignorarDedup?: boolean }): Promise<Noticia[]> {
   const listas = await Promise.all(
     FONTES.map((f) =>
       coletarDaFonte(f).catch((e) => {
@@ -46,7 +46,8 @@ export async function coletarNoticias(env: Env): Promise<Noticia[]> {
     if (novas.length >= CONFIG.maxNoticias) break;
     if (vistasNaRodada.has(n.url)) continue;
     vistasNaRodada.add(n.url);
-    if (await jaVista(env, n.url)) continue;
+    const vista = await jaVista(env, n.url);
+    if (vista && !opts?.ignorarDedup) continue;
     novas.push(n);
   }
   return novas;
