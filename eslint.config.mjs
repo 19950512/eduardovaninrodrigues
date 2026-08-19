@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Worker do agente de conteúdo — projeto separado, com seu próprio tsconfig/lint.
+    "agent/**",
   ]),
 ]);
 

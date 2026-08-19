@@ -1,0 +1,17 @@
+# Copie para .dev.vars (NÃO versionar) para rodar localmente com `wrangler dev`.
+# Em produção, use `npx wrangler secret put <NOME>` para cada um.
+
+ANTHROPIC_API_KEY="sk-ant-api03-..."
+ANTHROPIC_MODEL="claude-sonnet-5"          # ajuste para o id de modelo atual
+
+GITHUB_TOKEN="github_pat_..."                 # fine-grained: Contents RW + Pull requests RW no repo
+
+WHATSAPP_TOKEN="..."                       # token permanente do app/system user
+WHATSAPP_PHONE_ID="123456789012345"            # Phone Number ID
+WHATSAPP_DESTINO="5500000000000"               # número do advogado (E.164 só dígitos)
+WHATSAPP_TEMPLATE="novo_artigo"                # nome do template aprovado
+WHATSAPP_TEMPLATE_LANG="pt_BR"
+WHATSAPP_VERIFY_TOKEN="escolha-uma-string-qualquer"
+META_APP_SECRET="..."
+
+APPROVAL_SECRET="gere-com-openssl-rand-hex-32"
