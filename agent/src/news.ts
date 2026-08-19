@@ -15,12 +15,18 @@ const UA =
   "Mozilla/5.0 (compatible; EduardoVaninAgente/1.0; +https://eduardovrodrigues.adv.br)";
 
 export async function coletarNoticias(env: Env): Promise<Noticia[]> {
+  console.log(`[debug] iniciando coleta de ${FONTES.length} fontes.`);
   const listas = await Promise.all(
     FONTES.map((f) =>
-      coletarDaFonte(f).catch((e) => {
-        console.warn(`Falha ao coletar ${f.nome}:`, (e as Error).message);
-        return [] as Noticia[];
-      }),
+      coletarDaFonte(f)
+        .then((itens) => {
+          console.log(`[debug] ${f.nome}: ${itens.length} itens brutos.`);
+          return itens;
+        })
+        .catch((e) => {
+          console.warn(`Falha ao coletar ${f.nome}:`, (e as Error).message);
+          return [] as Noticia[];
+        }),
     ),
   );
 
@@ -86,7 +92,17 @@ async function coletarDaFonte(f: FonteNoticia): Promise<Noticia[]> {
   // 2) Fallback / caso HTML: raspa a página de listagem.
   const res = await buscar(f.url);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return extrairLinks(res, f);
+  const itens = await extrairLinks(res, f);
+  if (itens.length === 0) {
+    // 0 links casando o `match` costuma indicar bloqueio/desafio anti-bot
+    // (resposta 200 mas com HTML diferente do normal) em vez de "sem notícia".
+    const mitigado = res.headers.get("cf-mitigated");
+    const servidor = res.headers.get("server");
+    console.warn(
+      `${f.nome}: 0 links casaram o \`match\` (status ${res.status}${mitigado ? `, cf-mitigated=${mitigado}` : ""}${servidor ? `, server=${servidor}` : ""}) — possível bloqueio anti-bot.`,
+    );
+  }
+  return itens;
 }
 
 /**
