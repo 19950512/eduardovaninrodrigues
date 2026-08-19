@@ -41,6 +41,18 @@ export default {
       return new Response("Agente de conteúdo — OK", { status: 200 });
     }
 
+    // Dispara uma rodada manualmente (sem esperar o cron). Protegido pelo
+    // APPROVAL_SECRET. ?force=1 ignora a cadência mínima entre posts.
+    if (request.method === "GET" && url.pathname === "/trigger") {
+      const secret = url.searchParams.get("secret") ?? "";
+      if (!timingSafeEqual(secret, env.APPROVAL_SECRET)) {
+        return new Response("forbidden", { status: 403 });
+      }
+      const force = url.searchParams.get("force") === "1";
+      ctx.waitUntil(rodada(env, { force }));
+      return new Response("rodada disparada — acompanhe pelo `npm run tail`", { status: 202 });
+    }
+
     // Verificação do webhook (Meta faz um GET com hub.*).
     if (request.method === "GET" && url.pathname === "/webhook") {
       const mode = url.searchParams.get("hub.mode");
@@ -95,11 +107,11 @@ export default {
 } satisfies ExportedHandler<Env>;
 
 /** Uma rodada de geração + notificação. */
-async function rodada(env: Env): Promise<void> {
+async function rodada(env: Env, opts?: { force?: boolean }): Promise<void> {
   try {
     // Cadência: só propõe se já passou o intervalo desde a última proposta.
     const last = await getLastRun(env);
-    if (last) {
+    if (last && !opts?.force) {
       const diasDesde = (Date.now() - last.getTime()) / (24 * 3600 * 1000);
       if (diasDesde < CONFIG.cadenciaDias) {
         console.log(`Cadência: ${diasDesde.toFixed(1)}d < ${CONFIG.cadenciaDias}d — pulando.`);

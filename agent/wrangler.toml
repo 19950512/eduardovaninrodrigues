@@ -13,7 +13,7 @@ crons = ["0 12 * * *"]
 # e cole o id retornado abaixo.
 [[kv_namespaces]]
 binding = "AGENTE_KV"
-id = "PREENCHA_COM_O_ID_DO_KV"
+id = "239b00a66a414f21b98c5bd126243eca"
 
 # Observação: os segredos (ANTHROPIC_API_KEY, GITHUB_TOKEN, WHATSAPP_TOKEN,
 # WHATSAPP_PHONE_ID, WHATSAPP_DESTINO, WHATSAPP_VERIFY_TOKEN, META_APP_SECRET,
