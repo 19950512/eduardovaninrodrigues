@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { WebMCPProvider } from "@/components/webmcp-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <JsonLd data={buildAttorneyJsonLd()} />
         <JsonLd data={buildWebSiteJsonLd()} />
+        <WebMCPProvider />
         <ThemeProvider>
           <a
             href="#conteudo-principal"

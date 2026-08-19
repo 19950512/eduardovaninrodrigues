@@ -1,9 +1,11 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { AlertTriangle, CheckCircle2, Loader2 } from "lucide-react";
 import { enviarContato, type ContatoFormState } from "@/app/contato/actions";
+import { initializeWebMCPPolyfill } from "@mcp-b/webmcp-polyfill";
+import { pingWebMCPUsage } from "@/lib/webmcp/ping";
 
 const estadoInicial: ContatoFormState = { status: "idle" };
 
@@ -31,9 +33,79 @@ export function ContactForm() {
   // instante — um preenchimento humano leva no mínimo alguns segundos,
   // enquanto bots costumam enviar o POST quase instantaneamente.
   const [iniciadoEm] = useState(() => Date.now());
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Registra uma ferramenta WebMCP local (https://developer.chrome.com/docs/ai/webmcp)
+  // que preenche este formulário para revisão do usuário — o envio em si
+  // continua exigindo o clique humano em "Enviar mensagem", preservando o
+  // honeypot e o time-trap em contato/actions.ts.
+  useEffect(() => {
+    const form = formRef.current;
+    if (!form) return;
+
+    initializeWebMCPPolyfill();
+
+    const controller = new AbortController();
+
+    void document.modelContext.registerTool(
+      {
+        name: "preencher_formulario_contato",
+        description:
+          "Preenche o formulário de contato desta página com os dados informados, para revisão do usuário antes do envio. Não envia a mensagem — o usuário precisa conferir os campos e clicar em \"Enviar mensagem\".",
+        inputSchema: {
+          type: "object",
+          properties: {
+            nome: { type: "string", description: "Nome completo do remetente." },
+            email: { type: "string", description: "E-mail de contato do remetente." },
+            telefone: { type: "string", description: "Telefone de contato (opcional)." },
+            assunto: { type: "string", description: "Assunto da mensagem." },
+            mensagem: {
+              type: "string",
+              description:
+                "Conteúdo da mensagem. Não deve conter dados sigilosos ou detalhes de processos em andamento (número de processo, provas, estratégia de defesa).",
+            },
+          },
+          required: ["nome", "email", "assunto", "mensagem"],
+        },
+        annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
+        async execute(args) {
+          pingWebMCPUsage("preencher_formulario_contato");
+
+          const campos = {
+            nome: String(args.nome ?? ""),
+            email: String(args.email ?? ""),
+            telefone: String(args.telefone ?? ""),
+            assunto: String(args.assunto ?? ""),
+            mensagem: String(args.mensagem ?? ""),
+          };
+
+          for (const [name, value] of Object.entries(campos)) {
+            const campo = form.elements.namedItem(name);
+            if (campo instanceof HTMLInputElement || campo instanceof HTMLTextAreaElement) {
+              campo.value = value;
+            }
+          }
+
+          form.scrollIntoView({ behavior: "smooth", block: "center" });
+
+          return {
+            content: [
+              {
+                type: "text" as const,
+                text: 'Formulário preenchido. Revise os campos e clique em "Enviar mensagem" para concluir o envio.',
+              },
+            ],
+          };
+        },
+      },
+      { signal: controller.signal },
+    );
+
+    return () => controller.abort();
+  }, []);
 
   return (
-    <form action={formAction} className="space-y-5" noValidate>
+    <form ref={formRef} action={formAction} className="space-y-5" noValidate>
       <input type="hidden" name="iniciadoEm" value={iniciadoEm} />
 
       {/* Honeypot — invisível para usuários reais, ajuda a filtrar bots */}
