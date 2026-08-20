@@ -14,6 +14,7 @@ import type { Artigo } from "./types";
  */
 
 // AGENT-IMPORTS:INICIO
+import { artigo as traficoPrivilegiadoOQueEEPorQueAQuantidadeDeDrogaNaoBastaParaAfas } from "./trafico-privilegiado-o-que-e-e-por-que-a-quantidade-de-droga-nao-basta-para-afas";
 import { artigo as prisaoEmFlagranteDireitosDoPreso } from "./prisao-em-flagrante-direitos-do-preso";
 import { artigo as audienciaDeCustodiaComoFunciona } from "./audiencia-de-custodia-como-funciona";
 import { artigo as diferencaEntreInqueritoEProcessoPenal } from "./diferenca-entre-inquerito-e-processo-penal";
@@ -21,6 +22,7 @@ import { artigo as diferencaEntreInqueritoEProcessoPenal } from "./diferenca-ent
 
 const registro: Artigo[] = [
   // AGENT-REGISTRO:INICIO
+  traficoPrivilegiadoOQueEEPorQueAQuantidadeDeDrogaNaoBastaParaAfas,
   prisaoEmFlagranteDireitosDoPreso,
   audienciaDeCustodiaComoFunciona,
   diferencaEntreInqueritoEProcessoPenal,
