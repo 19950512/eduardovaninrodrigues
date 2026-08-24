@@ -14,6 +14,7 @@ import type { Artigo } from "./types";
  */
 
 // AGENT-IMPORTS:INICIO
+import { artigo as buscaEApreensaoDomiciliarQuaisSaoOsRequisitosLegaisParaAExpedicaoDo } from "./busca-e-apreensao-domiciliar-quais-sao-os-requisitos-legais-para-a-expedicao-do";
 import { artigo as prisaoEmFlagranteDireitosDoPreso } from "./prisao-em-flagrante-direitos-do-preso";
 import { artigo as audienciaDeCustodiaComoFunciona } from "./audiencia-de-custodia-como-funciona";
 import { artigo as diferencaEntreInqueritoEProcessoPenal } from "./diferenca-entre-inquerito-e-processo-penal";
@@ -21,6 +22,7 @@ import { artigo as diferencaEntreInqueritoEProcessoPenal } from "./diferenca-ent
 
 const registro: Artigo[] = [
   // AGENT-REGISTRO:INICIO
+  buscaEApreensaoDomiciliarQuaisSaoOsRequisitosLegaisParaAExpedicaoDo,
   prisaoEmFlagranteDireitosDoPreso,
   audienciaDeCustodiaComoFunciona,
   diferencaEntreInqueritoEProcessoPenal,
