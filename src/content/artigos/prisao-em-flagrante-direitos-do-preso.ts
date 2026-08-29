@@ -16,7 +16,7 @@ export const artigo: Artigo = {
     "Desde o momento da prisão, a pessoa presa tem direito a ser informada sobre seus direitos constitucionais, entre eles o direito ao silêncio, à assistência de advogado e à comunicação da prisão à família e ao juízo competente.",
     "A lavratura do auto de prisão em flagrante deve observar formalidades legais específicas. Eventuais irregularidades nesse procedimento podem ser objeto de análise técnica pela defesa, que avaliará a legalidade do ato e as medidas cabíveis, incluindo o pedido de relaxamento de prisão quando identificada ilegalidade.",
     "A audiência de custódia, realizada em até 24 horas após a prisão, é o momento em que o preso é apresentado à autoridade judicial, que analisará a legalidade da prisão e a eventual necessidade de conversão em prisão preventiva ou aplicação de medidas cautelares diversas.",
-    "Este texto tem caráter informativo geral e não substitui a orientação de um advogado sobre um caso concreto.",
+    "Este texto tem caráter informativo geral e não substitui a orientação do advogado sobre um caso concreto.",
   ],
   relacionados: [
     "audiencia-de-custodia-como-funciona",

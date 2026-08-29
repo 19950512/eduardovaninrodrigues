@@ -19,7 +19,7 @@
 ## Páginas principais
 - [O advogado](/sobre): formação, trajetória e forma de atuação
 - [Contato](/contato): telefone, WhatsApp, e-mail, endereço e formulário
-- [Artigos](/artigos): conteúdo informativo sobre direito penal e processo penal
+- [Artigos](/artigos): conteúdo informativo sobre direito criminal e processo penal
 - [Galeria](/galeria): registros da atuação profissional
 
 ## Artigos

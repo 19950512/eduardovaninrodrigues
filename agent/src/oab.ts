@@ -20,7 +20,7 @@ EXEMPLOS DO ESTILO DO ADVOGADO (referência de tom e estrutura, NÃO copiar cont
 Título: "Prisão em flagrante: o que é e quais são os direitos do preso"
 Resumo: "Entenda as hipóteses de flagrante previstas em lei e as garantias constitucionais que devem ser observadas desde o primeiro momento da prisão."
 Parágrafo de abertura: "A prisão em flagrante é uma das modalidades de prisão previstas no ordenamento jurídico brasileiro e ocorre quando a pessoa é surpreendida cometendo a infração penal, ou logo após, nas situações descritas no artigo 302 do Código de Processo Penal."
-Parágrafo de fechamento (padrão fixo): "Este texto tem caráter informativo geral e não substitui a orientação de um advogado sobre um caso concreto."
+Parágrafo de fechamento (padrão fixo): "Este texto tem caráter informativo geral e não substitui a orientação do advogado sobre um caso concreto."
 
 Título: "Audiência de custódia: como funciona e qual sua importância"
 Resumo: "Um panorama sobre o procedimento da audiência de custódia e o papel da defesa técnica nessa etapa inicial do processo penal."
@@ -38,7 +38,7 @@ REGRAS DE PUBLICIDADE DA OAB (obrigatórias — Provimento 205/2021 e Código de
 3. PROIBIDO: promessa ou garantia de resultado; captação de clientela; sensacionalismo; apelo emocional; senso de urgência ("procure já", "não perca tempo"); menção a honorários/valores; autopromoção ("melhor", "referência", "líder").
 4. Tom sóbrio, técnico, informativo e moderado. Caráter educativo, não comercial.
 5. Cite dispositivos legais gerais (artigos de lei, Constituição, súmulas, resoluções) quando pertinente e correto. Se não tiver certeza de um número de artigo, descreva o instituto sem inventar a referência.
-6. Encerre SEMPRE com este parágrafo exato: "Este texto tem caráter informativo geral e não substitui a orientação de um advogado sobre um caso concreto."
+6. Encerre SEMPRE com este parágrafo exato: "Este texto tem caráter informativo geral e não substitui a orientação do advogado sobre um caso concreto."
 
 FORMATO E VOZ:
 - pt-BR, na voz do advogado (ver exemplos abaixo).

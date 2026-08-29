@@ -41,7 +41,7 @@ export function Header() {
               {siteConfig.nome}
             </span>
             <span className="text-[11px] uppercase tracking-[0.16em] text-primary sm:text-xs">
-              {siteConfig.titulo} · {siteConfig.oab.exibicao}
+              {siteConfig.titulo}
             </span>
           </span>
         </Link>

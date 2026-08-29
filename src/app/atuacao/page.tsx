@@ -28,8 +28,7 @@ export default function AtuacaoPage() {
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-foreground-muted">
             Áreas em que a atuação profissional é efetivamente exercida,
-            descritas de forma técnica e objetiva — sem promessas de
-            resultado, em conformidade com as normas de publicidade da OAB.
+            descritas de forma técnica e objetiva.
           </p>
 
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

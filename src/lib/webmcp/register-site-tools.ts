@@ -132,7 +132,7 @@ export function registerSiteTools() {
     {
       name: "buscar_artigos",
       description:
-        "Busca artigos publicados no site sobre Direito Penal e Processo Penal por termo e/ou categoria. Retorna título, resumo, categoria, data e URL de cada artigo encontrado.",
+        "Busca artigos publicados no site sobre direito criminal e Processo Penal por termo e/ou categoria. Retorna título, resumo, categoria, data e URL de cada artigo encontrado.",
       inputSchema: {
         type: "object",
         properties: {

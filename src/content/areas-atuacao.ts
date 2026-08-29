@@ -49,7 +49,7 @@ export const areasAtuacao: AreaAtuacao[] = [
     slug: "tribunal-do-juri",
     titulo: "Tribunal do Júri",
     resumo:
-      "Defesa técnica em processos de competência do Tribunal do Júri, da fase de pronúncia ao plenário.",
+      "Defesa técnica em processos de competência do Tribunal do Júri, da fase de pronúncia ao plenário. (Crimes contra a vida)",
     descricao: [
       "Os processos de competência do Tribunal do Júri possuem rito e dinâmica próprios, que exigem preparação técnica específica — da fase de instrução e pronúncia até a sustentação oral em plenário perante o Conselho de Sentença.",
       "A atuação é pautada pela preparação minuciosa de cada etapa, com respeito às regras do procedimento e aos princípios constitucionais que regem o júri popular.",

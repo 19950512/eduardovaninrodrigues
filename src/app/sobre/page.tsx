@@ -74,8 +74,8 @@ export default function SobrePage() {
               </p>
               <p>
                 É bacharel em Direito pela FABE e mantém formação continuada
-                na área criminal, atualmente cursando pós-graduação em
-                Direito Penal e Processo Penal, além de pós-graduação em
+                na área criminal, pós-graduado em
+                Direito Penal e Processo Penal e pós-graduado em
                 Direito Penal e Criminologia pela UNINTER.
               </p>
               <p>
@@ -83,11 +83,6 @@ export default function SobrePage() {
                 audiências e sessões do Tribunal do Júri, com preparação
                 técnica cuidadosa para cada etapa processual — da instrução à
                 sustentação oral em plenário.
-              </p>
-              <p className="text-sm italic text-foreground-muted/80">
-                Este texto está em fase de revisão e será atualizado com mais
-                detalhes sobre a trajetória profissional, conforme material
-                fornecido pelo cliente.
               </p>
             </div>
 

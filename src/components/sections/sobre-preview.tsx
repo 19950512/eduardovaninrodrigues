@@ -33,10 +33,8 @@ export function SobrePreview() {
               penal.
             </p>
             <p>
-              Formado em Direito pela FABE, segue em constante
-              aperfeiçoamento acadêmico, com pós-graduação em andamento em
-              Direito Penal e Processo Penal, e em Direito Penal e
-              Criminologia pela UNINTER.
+              Formado em Direito, segue em constante aperfeiçoamento acadêmico. <br />
+              Pós Graduado em Direito Penal e Processo Penal / Direito Penal e Criminologia
             </p>
           </div>
           <Link

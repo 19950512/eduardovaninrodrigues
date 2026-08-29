@@ -8,9 +8,6 @@ export function Hero() {
     <section className="relative overflow-hidden border-b border-border bg-background-subtle">
       <div className="container-editorial grid items-center gap-12 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:py-24">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-            {siteConfig.oab.exibicao} · {siteConfig.titulo}
-          </p>
           <h1 className="font-display mt-5 text-balance text-4xl font-medium leading-[1.08] text-foreground sm:text-5xl lg:text-[3.4rem]">
             Defesa técnica e discrição em cada etapa do processo penal
           </h1>

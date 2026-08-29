@@ -13,7 +13,7 @@ export function ContatoCta() {
         <div className="flex flex-col items-start justify-between gap-8 rounded-3xl border border-border bg-background-subtle px-8 py-12 sm:flex-row sm:items-center sm:px-12">
           <div>
             <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
-              Precisa de orientação técnica em um caso penal?
+              Precisa de orientação técnica em um caso criminal?
             </h2>
             <p className="mt-3 max-w-lg text-sm leading-relaxed text-foreground-muted">
               Entre em contato para uma conversa inicial. Evite enviar

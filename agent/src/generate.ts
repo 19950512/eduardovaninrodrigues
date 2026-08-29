@@ -67,7 +67,7 @@ function validar(p: RespostaModelo, relacionados: string[]): ArtigoDraft {
   }
 
   const RODAPE =
-    "Este texto tem caráter informativo geral e não substitui a orientação de um advogado sobre um caso concreto.";
+    "Este texto tem caráter informativo geral e não substitui a orientação do advogado sobre um caso concreto.";
   const conteudo = p.conteudo.map((s) => s.trim()).filter(Boolean);
   if (conteudo[conteudo.length - 1] !== RODAPE) conteudo.push(RODAPE);
 
