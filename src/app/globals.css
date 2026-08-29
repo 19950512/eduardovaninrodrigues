@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ---------------------------------------------------------------------- */
 /* Paleta institucional — bordô como cor principal, sem gradientes.        */
 /* Os mesmos tons de bordô são usados no tema claro e no tema escuro.      */
