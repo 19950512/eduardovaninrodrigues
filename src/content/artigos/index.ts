@@ -14,6 +14,7 @@ import type { Artigo } from "./types";
  */
 
 // AGENT-IMPORTS:INICIO
+import { artigo as quesitosNoTribunalDoJuriPorQueAFormulacaoCorretaEEssencialAoJulgame } from "./quesitos-no-tribunal-do-juri-por-que-a-formulacao-correta-e-essencial-ao-julgame";
 import { artigo as acessoADadosDeIpEmInvestigacoesCriminaisEAExigenciaDeAutorizacaoJud } from "./acesso-a-dados-de-ip-em-investigacoes-criminais-e-a-exigencia-de-autorizacao-jud";
 import { artigo as principioDaHomogeneidadeEOsLimitesDaPrisaoPreventiva } from "./principio-da-homogeneidade-e-os-limites-da-prisao-preventiva";
 import { artigo as prisaoEmFlagranteDireitosDoPreso } from "./prisao-em-flagrante-direitos-do-preso";
@@ -23,6 +24,7 @@ import { artigo as diferencaEntreInqueritoEProcessoPenal } from "./diferenca-ent
 
 const registro: Artigo[] = [
   // AGENT-REGISTRO:INICIO
+  quesitosNoTribunalDoJuriPorQueAFormulacaoCorretaEEssencialAoJulgame,
   acessoADadosDeIpEmInvestigacoesCriminaisEAExigenciaDeAutorizacaoJud,
   principioDaHomogeneidadeEOsLimitesDaPrisaoPreventiva,
   prisaoEmFlagranteDireitosDoPreso,
